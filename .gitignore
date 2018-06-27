@@ -35,8 +35,8 @@ Temporary Items
 !.vscode/launch.json
 !.vscode/extensions.json
 
-
-# End of https://www.gitignore.io/api/osx,visualstudiocode
-
 .gitignore
 /node_modules
+
+
+# End of https://www.gitignore.io/api/osx,visualstudiocode
