@@ -44,7 +44,7 @@ var Layout = function (_Component) {
       this.setState({
         health: this.state.health - 25
       }, function () {
-        console.log('CLICKED GIRL HEALTH IS NOW' + this.state.health);
+        console.log('CLICKED GIRL HEALTH IS NOW ' + this.state.health);
       });
     }
   }, {
@@ -69,17 +69,11 @@ var Layout = function (_Component) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'h3',
               null,
-              'Health: ',
-              this.state.health
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'h3',
-              null,
               'Level: ',
               this.state.level
             )
           ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(GirlImage, null)
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(GirlImage, { reduceHealth: this.clickedGirl, health: this.state.health })
         )
       );
     }
@@ -96,7 +90,9 @@ var GirlImage = function (_Component2) {
 
     var _this2 = _possibleConstructorReturn(this, (GirlImage.__proto__ || Object.getPrototypeOf(GirlImage)).call(this));
 
-    _this2.state = {};
+    _this2.state = {
+      gameOver: 'SORRY YOU ARE DEAD!!!'
+    };
     return _this2;
   }
 
@@ -106,7 +102,13 @@ var GirlImage = function (_Component2) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'GirlImageComp' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '/img/bape.png', alt: 'girl wearing bape', onClick: this.clickedGirl })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '/img/bape.png', alt: 'girl wearing bape', onClick: this.props.reduceHealth }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h3',
+          null,
+          'Health: ',
+          this.props.health <= 0 ? this.state.gameOver : this.props.health
+        )
       );
     }
   }]);
